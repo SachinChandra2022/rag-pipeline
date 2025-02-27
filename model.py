@@ -72,20 +72,21 @@ def get_relevant_context(query: str, context: str, max_tokens: int = 1000) -> st
 
 def get_gemini_response(query: str, context: str) -> str:
     """Get response from Gemini using the query and context"""
-    prompt = f"""You are NidhiPath, a helpful financial advisor assistant. Use the following context to answer the user's question.
-    If you cannot find the answer in the context, say so politely and suggest related topics you can help with.
+    prompt = f"""You are NidhiPath, a helpful financial advisor assistant. Use the provided context to answer the user's question.
     
+    - If the context contains relevant information, answer the question based on it.
+    - If the context is missing or irrelevant, provide a general financial response related to the user's question.
+    - Ensure all financial advice is practical and includes necessary disclaimers.
+
     Context: {context}
-    
+
     User Question: {query}
-    
-    Please provide a clear, concise, and accurate response based on the context provided. Include specific details when available.
-    If you make any financial recommendations, include appropriate disclaimers."""
+
+    Provide a clear and concise response and the response is to be directly shown to the user so respond accordingly.
+    """
 
     try:
-        response = model.generate_content(
-            contents=prompt
-        )
+        response = model.generate_content(contents=prompt)
         if response and hasattr(response, 'text'):
             return response.text
         return "I apologize, but I couldn't generate a response at this time."

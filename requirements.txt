@@ -1,9 +1,5 @@
-numpy==1.26.4
-pandas
-faiss-cpu
-chromadb
-fastapi
-uvicorn
+Flask
+Flask-Cors
+Werkzeug
+PyMuPDF 
 gunicorn
-langchain
-krutrim

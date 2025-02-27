@@ -1,5 +1,12 @@
 Flask
 Flask-Cors
-Werkzeug
-PyMuPDF 
 gunicorn
+PyMuPDF
+PyPDF2
+Werkzeug
+Jinja2
+MarkupSafe
+itsdangerous
+click
+blinker
+packaging

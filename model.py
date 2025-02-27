@@ -70,22 +70,19 @@ def get_relevant_context(query: str, context: str, max_tokens: int = 1000) -> st
     
     return relevant_context.strip()
 
-def get_gemini_response(query: str, context: str, suggested_questions: list) -> str:
-    """Get response from Gemini using the query, context, and suggested questions"""
+def get_gemini_response(query: str, context: str) -> str:
+    """Get response from Gemini using the query and context"""
     prompt = f"""You are NidhiPath, a helpful financial advisor assistant. Use the provided context to answer the user's question.
     
     - If the context contains relevant information, answer the question based on it.
     - If the context is missing or irrelevant, provide a general financial response related to the user's question.
     - Ensure all financial advice is practical and includes necessary disclaimers.
 
-    Suggested Questions (based on uploaded file): 
-    {', '.join(suggested_questions)}
-
     Context: {context}
 
     User Question: {query}
 
-    Provide a clear and concise response and the response is to be directly shown to the user so respond accordingly.
+    Provide a clear, concise, and accurate response with specific details when available.
     """
 
     try:

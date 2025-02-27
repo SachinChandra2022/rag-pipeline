@@ -12,7 +12,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 # Configure Gemini API
 genai.configure(api_key="AIzaSyAB6z1s_iN4R7tlpeRJJniQ4o2yIax-sFg")
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('gemini-1.5-pro-latest')
 
 def download_nltk_data():
     try:

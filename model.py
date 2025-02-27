@@ -70,13 +70,16 @@ def get_relevant_context(query: str, context: str, max_tokens: int = 1000) -> st
     
     return relevant_context.strip()
 
-def get_gemini_response(query: str, context: str) -> str:
-    """Get response from Gemini using the query and context"""
+def get_gemini_response(query: str, context: str, suggested_questions: list) -> str:
+    """Get response from Gemini using the query, context, and suggested questions"""
     prompt = f"""You are NidhiPath, a helpful financial advisor assistant. Use the provided context to answer the user's question.
     
     - If the context contains relevant information, answer the question based on it.
     - If the context is missing or irrelevant, provide a general financial response related to the user's question.
     - Ensure all financial advice is practical and includes necessary disclaimers.
+
+    Suggested Questions (based on uploaded file): 
+    {', '.join(suggested_questions)}
 
     Context: {context}
 
@@ -93,6 +96,7 @@ def get_gemini_response(query: str, context: str) -> str:
     except Exception as e:
         print(f"Debug - Error details: {str(e)}")
         return f"I apologize, but I encountered an error: {str(e)}"
+    
 
 def nidhi_path(sentence: str) -> str:
     # List of financial knowledge PDFs

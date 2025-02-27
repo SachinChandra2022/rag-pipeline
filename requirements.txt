@@ -6,3 +6,4 @@ numpy
 nltk
 scikit-learn
 google-generativeai
+gunicorn
